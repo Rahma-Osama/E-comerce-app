@@ -17,6 +17,7 @@ class HomeScreen1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if( BlocProvider.of<LayoutCubit>(context).userModel == null ) BlocProvider.of<LayoutCubit>(context).getUsersData();
     return BlocConsumer<LayoutCubit,LayoutStates>(
         listener: (ctx , state){},
         builder: (ctx , state) =>  SingleChildScrollView(child: Padding(

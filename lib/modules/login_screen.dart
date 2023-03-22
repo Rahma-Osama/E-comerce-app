@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:untitled8/layout/layout_cubit/layout_cubit.dart';
 import 'package:untitled8/layout/layout_screen.dart';
 import 'package:untitled8/modules/cubit/cubit.dart';
 import 'package:untitled8/modules/cubit/states.dart';
@@ -91,9 +92,10 @@ class LogIn extends StatelessWidget {
                       SizedBox(height: 30,),
                       Padding(
                         padding: const EdgeInsets.all(12.0),
-                        child: customButton(text: "Sign In", fun: (){
+                        child: customButton(text: "Sign In", fun: ()async{
                           if(formKey.currentState!.validate()){
                             BlocProvider.of<AuthCubit>(context).logIn(email: emailController.text, password: passwordController.text);
+                           await BlocProvider.of<LayoutCubit>(context).getUsersData();
                           }
                         }),
                       ),

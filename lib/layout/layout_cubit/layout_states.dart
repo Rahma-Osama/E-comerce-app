@@ -40,3 +40,6 @@ class LoadingUpdateUserData extends LayoutStates {}
 class SuccessUpdateUserData extends LayoutStates {}
 class FailedUpdateUserData extends LayoutStates {}
 
+
+class logoutSuccessfully extends LayoutStates {}
+

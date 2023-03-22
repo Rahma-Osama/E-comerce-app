@@ -19,7 +19,7 @@ void main()async{
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   await CacheNetwork.cachInstialization();
-  token=  CacheNetwork.getCacheData(key: "token");
+  token=  await CacheNetwork.getCacheData(key: "token");
   print("tokkkkeeeeeennnnn : $token");
   runApp(MyApp());
 }
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         listener: (ctx,state){},
         builder: (ctx,state)=>MaterialApp(
             debugShowCheckedModeBanner: false,
-            home:SplashScreen()
+            home:LogIn()
              // token!= null || token!="Null "? LayoutScreen() :SplashScreen()
         ),
       ),

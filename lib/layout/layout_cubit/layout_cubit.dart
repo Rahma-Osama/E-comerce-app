@@ -37,6 +37,7 @@ class LayoutCubit extends Cubit<LayoutStates>{
    ];
     UserModel? userModel;
    getUsersData()async{
+     print(token);
      emit(LoadingGetUserData());
      Response response = await http.get(Uri.parse('https://student.valuxapps.com/api/profile'),
      headers: {
@@ -47,6 +48,7 @@ class LayoutCubit extends Cubit<LayoutStates>{
      if(responseData['status']==true){
        userModel = UserModel.fromjson(response: responseData['data']);
        emit(SuccessGetUserData());
+       print(token);
        print(userModel!.name);
      }
      else{
@@ -256,5 +258,17 @@ class LayoutCubit extends Cubit<LayoutStates>{
     }
   }
 
+  void logOut(context)
+  {
+    favoritesIds.clear();
+    cartIds.clear();
+    cart.clear();
+    favorites.clear();
+    userModel = null;
+    bottomNavBarIndex=0;
+    CacheNetwork.deleteCacheData(key: "token");
+    Navigator.pushReplacement( context , MaterialPageRoute(builder: (context)=>LogIn()));
+    emit(logoutSuccessfully());
+  }
 
 }

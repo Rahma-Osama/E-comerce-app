@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart';
+import 'package:untitled8/layout/layout_cubit/layout_cubit.dart';
 import 'package:untitled8/modules/cubit/states.dart';
 import 'package:http/http.dart' as http;
 import 'package:untitled8/shared/network/local_network.dart';
@@ -72,6 +73,7 @@ class AuthCubit extends Cubit<AuthStates>{
         if(responseData['status'] == true){
           await CacheNetwork.insertToCashe(key: "token", value: responseData['data']['token']);
           await CacheNetwork.insertToCashe(key: "password", value:password);
+          token =  await CacheNetwork.getCacheData(key: "token");
           emit(LogInSuccessState());
           debugPrint("LogIN Succcessfully , token is : ${token}");
         }

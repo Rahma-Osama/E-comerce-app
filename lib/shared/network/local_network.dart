@@ -9,12 +9,11 @@ class CacheNetwork{
   }
 
   static Future<bool> insertToCashe({required String key , required String value})async{
-    // token=value;
     return await sharedPref.setString(key, value);
   }
 
-  static String getCacheData({required String key}){
-    return sharedPref.getString(key)??"Null";
+  static Future<String?> getCacheData({required String key}) async {
+    return sharedPref.getString(key);
   }
 
   static Future<bool> deleteCacheData({required String key})async{
