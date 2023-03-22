@@ -39,8 +39,8 @@ class MyApp extends StatelessWidget {
         listener: (ctx,state){},
         builder: (ctx,state)=>MaterialApp(
             debugShowCheckedModeBanner: false,
-            home:LogIn()
-             // token!= null || token!="Null "? LayoutScreen() :SplashScreen()
+            home:
+             token!= null || token!="Null "? LayoutScreen() :SplashScreen()
         ),
       ),
     );
